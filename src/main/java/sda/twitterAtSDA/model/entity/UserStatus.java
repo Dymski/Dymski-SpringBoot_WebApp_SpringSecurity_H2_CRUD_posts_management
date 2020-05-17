@@ -1,4 +1,4 @@
-package sda.twitterAtSDA.model;
+package sda.twitterAtSDA.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
