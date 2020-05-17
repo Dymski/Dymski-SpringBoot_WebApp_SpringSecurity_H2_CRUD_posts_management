@@ -43,6 +43,11 @@ html, body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.form-register select[class="selectGender"]{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 
 .container, .row.justify-content-center.align-items-center {
     height: 100%;
