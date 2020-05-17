@@ -1,5 +1,9 @@
 <!doctype html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="https://www.thymleaf.org">
+=======
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+>>>>>>> 0a9dc639dfe2669726ea968cf6c0019d516df309
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,15 +41,25 @@
 </head>
 
 <body class="text-center">
+<<<<<<< HEAD
 <form th:action="@{/login-process}" class="form-signin"  method="post">
+=======
+<form th:action="@{/login-process}" method="post" class="form-signin">
+>>>>>>> 0a9dc639dfe2669726ea968cf6c0019d516df309
     <h1 class="h3 mb-3 font-weight-normal" align="center">Log in</h1>
 
     <label for="inputUsername" class="sr-only" >UserName</label>
+<<<<<<< HEAD
     <input type="text" id="inputUsername" class="form-control" placeholder="User name" th:required="required" th:autofocus="true" th:name="username"/>
 
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:required="required" th:name="password"/>
 
+=======
+    <input type="text" id="inputUsername" class="form-control" placeholder="User name" th:required="required" th:name="username" th:autofocus="true"/>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:required="required" th:name="password"/>
+>>>>>>> 0a9dc639dfe2669726ea968cf6c0019d516df309
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
     <p class="mt-5 mb-3 text-muted">&copy; JavaKRK22</p>
