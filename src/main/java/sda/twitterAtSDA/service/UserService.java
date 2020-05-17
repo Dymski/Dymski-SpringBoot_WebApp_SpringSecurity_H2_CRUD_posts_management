@@ -22,7 +22,7 @@ public class UserService {
 
     public void addUser(CreateUserDto createUserDto){
         User user = mapper.map(createUserDto, User.class);
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
