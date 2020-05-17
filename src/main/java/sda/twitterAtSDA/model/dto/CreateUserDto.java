@@ -7,8 +7,8 @@ private String email;
 private String name;
 private String surname;
 private Integer age;
-private Integer password;
-private Integer role;
+private String password;
+private String role;
 
     public Long getId() {
         return id;
@@ -50,19 +50,19 @@ private Integer role;
         this.age = age;
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Integer getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }
