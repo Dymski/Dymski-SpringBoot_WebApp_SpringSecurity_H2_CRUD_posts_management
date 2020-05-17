@@ -9,8 +9,6 @@
 
     <title>Signin page</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
-
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -24,28 +22,36 @@
     <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#563d7c">
 
-
     <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
         }
-
     </style>
+
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
+<div class="d-flex justify-content-center">
 <form th:action="@{/login-process}" method="post" class="form-signin">
 
     <h1 class="h3 mb-3 font-weight-normal" align="center">Log in</h1>
 
     <label for="inputUsername" class="sr-only" >UserName</label>
-
     <input type="text" id="inputUsername" class="form-control" placeholder="User name" th:required="required" th:name="username" th:autofocus="true"/>
+
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:required="required" th:name="password"/>
 
@@ -53,6 +59,7 @@
 
     <p class="mt-5 mb-3 text-muted">&copy; JavaKRK22</p>
 </form>
+</div>
 </body>
 
 </html>
