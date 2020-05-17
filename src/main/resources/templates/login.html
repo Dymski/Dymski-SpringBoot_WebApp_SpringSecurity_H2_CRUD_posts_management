@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,12 +38,12 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin">
+<form th:action="@{/login-process}" method="post" class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal" align="center">Log in</h1>
     <label for="inputUsername" class="sr-only" >UserName</label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="User name" required autofocus>
+    <input type="text" id="inputUsername" class="form-control" placeholder="User name" th:required="required" th:name="username" th:autofocus="true"/>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:required="required" th:name="password"/>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; JavaKRK22</p>
 </form>
