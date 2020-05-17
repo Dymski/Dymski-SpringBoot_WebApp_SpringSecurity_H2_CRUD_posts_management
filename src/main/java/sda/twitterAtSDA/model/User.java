@@ -10,14 +10,13 @@ import java.util.Date;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
-    private String userSurname;
-    private String userEmail;
+    private String name;
+    private String surname;
+    private String email;
     private String password;
     private String gender;
-    private Integer age;
     private Date dateOfBirth;
     private String role;
 
@@ -29,28 +28,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String userName) {
+        this.name = userName;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setSurname(String userSurname) {
+        this.surname = userSurname;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String userEmail) {
+        this.email = userEmail;
     }
 
     public String getPassword() {
@@ -69,13 +68,6 @@ public class User {
         this.gender = gender;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -97,12 +89,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", userSurname='" + userSurname + '\'' +
-                ", userEmail='" + userEmail + '\'' +
+                ", userName='" + name + '\'' +
+                ", userSurname='" + surname + '\'' +
+                ", userEmail='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
-                ", age=" + age +
                 ", dateOfBirth=" + dateOfBirth +
                 ", role='" + role + '\'' +
                 '}';
