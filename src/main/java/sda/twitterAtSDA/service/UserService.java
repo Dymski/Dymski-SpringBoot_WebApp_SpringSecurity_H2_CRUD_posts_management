@@ -7,6 +7,9 @@ import sda.twitterAtSDA.model.dto.CreateUserDto;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -20,18 +23,30 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void addUser(CreateUserDto createUserDto){
+    public void addUser(CreateUserDto createUserDto) {
         User user = mapper.map(createUserDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_USER");
         userRepository.save(user);
     }
 
-    public void deleteUserById(Long id){
+    public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
 
-    public void findUserById(Long id){
+    public void findUserById(Long id) {
         userRepository.findById(id);
+    }
+
+    public List<CreateUserDto> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(user -> mapper.map(user, CreateUserDto.class))
+                .collect(Collectors.toList());
+    }
+
+    public List<CreateUserDto> getUsersByName(String name){
+        return getAllUsers().stream()
+                .filter(userDto -> userDto.getName().equals(name))
+                .collect(Collectors.toList());
     }
 }
