@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class CreateMessageDto {
+public class MessageDto {
 
     private Long messageID;
     private Long postID;
