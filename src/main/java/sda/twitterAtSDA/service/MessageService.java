@@ -26,7 +26,6 @@ public class MessageService {
         message = messageRepository.save(message);
     }
 
-
     public List<MessageDto> getAllMessages(){
         return messageRepository.findAll()
                 .stream()
