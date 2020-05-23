@@ -44,3 +44,7 @@ footer p {
 .logout{
     margin-right: 10px;
 }
+
+.messageInput{
+    padding: 10px;
+}
