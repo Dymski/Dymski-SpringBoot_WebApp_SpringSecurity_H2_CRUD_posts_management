@@ -18,6 +18,7 @@ public class MessageController {
     @PostMapping("/addPost")
     public String addPost(@ModelAttribute MessageDto messageDto){
         messageService.createMessage(messageDto);
+        new ModelAndView("message", "newMessage", MessageDto.class);
         return "redirect:/index";
     }
 
