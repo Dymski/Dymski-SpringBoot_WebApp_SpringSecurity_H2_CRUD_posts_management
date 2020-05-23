@@ -76,12 +76,13 @@
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <div class="input-group">
                                 <div class="input-group-prepend messageInput">
-                                    <form method="post" action="/addPost">
+                                    <form method="post" action="/addPost" th:object="${newMessage}">
                                         <button type="button submit" class="btn btn-success">Submit</button>
+                                        <textarea class="form-control" aria-label="With textarea" id="inputMessage" placeholder="Type message here..." th:required="required" th:name="messageText"></textarea>
                                     </form>
 
                                 </div>
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
 
@@ -90,11 +91,10 @@
                                         <tr th:each="message : ${messageList}" th:object="${message}">
                                             <a class="list-group-item flex-column align-items-start ">
                                                 <div class="d-flex w-100 justify-content-between">
-
                                                     <h5 class="mb-1" th:type="text" th:text="${message.messageText}"></h5>
                                                     <small th:type="text" th:text="${message.messageDate}"></small>
                                                 </div>
-                                                <p class="mb-1"> Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                                <p class="mb-1" th:type="text" th:text="${message.messageText}"></p>
                                             </a>
 
                                         </tr>
