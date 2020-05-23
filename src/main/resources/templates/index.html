@@ -100,11 +100,11 @@
                                     <a class="list-group-item flex-column align-items-start">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-1" th:type="text"
-                                                th:text="${message.getUserID()}"></h5>
+                                                th:text="${message.getName()+':'}"></h5>
                                             <small th:type="text"
                                                    th:text="${message.getMessageDate()}"></small>
                                         </div>
-                                        <p class="mb-1" th:type="text" th:text="${message.messageText}"></p>
+                                        <small class="mb-1" th:type="text" th:text="${message.messageText}"></small>
                                     </a>
                                 </tr>
                             </table>

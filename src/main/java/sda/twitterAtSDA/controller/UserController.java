@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sda.twitterAtSDA.model.dto.CreateUserDto;
-import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.service.UserService;
-
-import javax.validation.Valid;
 
 @Controller
 public class UserController {

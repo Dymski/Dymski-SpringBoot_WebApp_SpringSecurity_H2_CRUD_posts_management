@@ -14,6 +14,7 @@ public class Message {
     private Long commentID;
     @ManyToOne(cascade = {CascadeType.ALL})
     private User user;
+    private String name;
     @Temporal(TemporalType.DATE)
 
     private Date messageDate;
@@ -49,6 +50,14 @@ public class Message {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getMessageDate() {
