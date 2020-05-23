@@ -85,8 +85,9 @@
                                 <div class="list-group">
                                     <table>
                                         <tr th:each="message : ${messageList}" th:object="${message}">
-                                            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                                            <a class="list-group-item flex-column align-items-start ">
                                                 <div class="d-flex w-100 justify-content-between">
+
                                                     <h5 class="mb-1" th:type="text" th:text="${message.messageText}"></h5>
                                                     <small th:type="text" th:text="${message.messageDate}"></small>
                                                 </div>
