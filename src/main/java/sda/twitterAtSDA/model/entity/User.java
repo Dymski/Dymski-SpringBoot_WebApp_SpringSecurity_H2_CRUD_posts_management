@@ -3,9 +3,13 @@ package sda.twitterAtSDA.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name="users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +21,9 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Message> messages = new HashSet<>();
 
     public Long getId() {
         return id;
