@@ -1,5 +1,9 @@
 package sda.twitterAtSDA.model.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class CreateUserDto {
 
 private Long id;
@@ -7,6 +11,9 @@ private String email;
 private String name;
 private String surname;
 private Integer age;
+private String gender;
+@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+private Date dateOfBirth;
 private String password;
 private String role;
 
@@ -64,5 +71,21 @@ private String role;
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

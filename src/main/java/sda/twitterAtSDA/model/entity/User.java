@@ -1,10 +1,7 @@
 package sda.twitterAtSDA.model.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +14,7 @@ public class User {
     private String email;
     private String password;
     private String gender;
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String role;
 
