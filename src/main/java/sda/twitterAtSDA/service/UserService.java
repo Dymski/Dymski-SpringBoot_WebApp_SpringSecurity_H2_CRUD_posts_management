@@ -3,6 +3,7 @@ package sda.twitterAtSDA.service;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import sda.twitterAtSDA.exception.UserNotFoundException;
 import sda.twitterAtSDA.model.dto.CreateUserDto;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
@@ -34,8 +35,8 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void findUserById(Long id) {
-        userRepository.findById(id);
+    public User findUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No user with such id"));
     }
 
     public List<CreateUserDto> getAllUsers() {
@@ -48,5 +49,11 @@ public class UserService {
         return getAllUsers().stream()
                 .filter(userDto -> userDto.getName().equals(name))
                 .collect(Collectors.toList());
+    }
+
+    public void modifyUser(User user){
+        User userFromDb = findUserById(user.getId());
+        //Reszta kodu do modyfikowania użytkownika
+
     }
 }
