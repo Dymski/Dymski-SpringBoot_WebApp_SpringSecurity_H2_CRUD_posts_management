@@ -15,6 +15,7 @@ public class Message {
     @ManyToOne(cascade = {CascadeType.ALL})
     private User user;
     @Temporal(TemporalType.DATE)
+
     private Date messageDate;
     private String messageText;
 

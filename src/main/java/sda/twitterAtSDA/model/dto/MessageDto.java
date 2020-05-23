@@ -9,7 +9,7 @@ public class MessageDto {
     private Long messageID;
     private Long postID;
     private Long commentID;
-    private Long userID;
+    private String userName;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date messageDate;
     private String messageText;
@@ -38,12 +38,12 @@ public class MessageDto {
         this.commentID = commentID;
     }
 
-    public Long getUserID() {
-        return userID;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Date getMessageDate() {
