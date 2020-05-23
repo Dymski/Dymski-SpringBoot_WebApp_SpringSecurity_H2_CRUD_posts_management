@@ -15,11 +15,6 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping("/index")
-    public ModelAndView messageView(){
-        return new ModelAndView("index", "messageList", messageService.getAllMessages());
-    }
-
     @PostMapping("/addPost")
     public String addPost(@ModelAttribute MessageDto messageDto){
         messageService.createMessage(messageDto);
