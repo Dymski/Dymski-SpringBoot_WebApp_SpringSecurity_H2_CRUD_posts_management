@@ -89,6 +89,14 @@ public class User {
         this.role = role;
     }
 
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
+    }
+
     @Override
     public String toString() {
         return "User{" +

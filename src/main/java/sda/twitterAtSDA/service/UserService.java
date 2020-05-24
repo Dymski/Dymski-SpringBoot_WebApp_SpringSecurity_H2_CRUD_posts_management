@@ -25,8 +25,8 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void addUser(UserDto createUserDto) {
-        User user = mapper.map(createUserDto, User.class);
+    public void addUser(UserDto userDto) {
+        User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_USER");
         userRepository.save(user);
@@ -39,7 +39,6 @@ public class UserService {
     public User findUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No user with such id"));
     }
-
 
     public List<UserDto> getAllUsers() {
         return userRepository.findAll().stream()
