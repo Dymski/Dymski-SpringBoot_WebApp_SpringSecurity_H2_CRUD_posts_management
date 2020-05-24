@@ -52,12 +52,12 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-//    public UserDto findUserByEmail(String email) {
-//        return getAllUsers().stream()
-//                .filter(userDto -> userDto.getEmail().equals(email))
-//                .findFirst()
-//                .get();
-//    }
+    public UserDto findUserByEmail(String email) {
+        return getAllUsers().stream()
+                .filter(userDto -> userDto.getEmail().equals(email))
+                .findFirst()
+                .get();
+    }
 
     public void modifyUser(User user){
         User userFromDb = findUserById(user.getId());

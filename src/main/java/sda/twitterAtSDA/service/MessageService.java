@@ -2,12 +2,10 @@ package sda.twitterAtSDA.service;
 
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.model.dto.MessageDto;
 import sda.twitterAtSDA.model.entity.Message;
-import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.MessageRepository;
 
 import java.util.Date;
@@ -21,14 +19,18 @@ public class MessageService {
     private MessageRepository messageRepository;
     private UserService userService;
 
-    public MessageService(ModelMapper mapper, MessageRepository messageRepository) {
+    public MessageService(ModelMapper mapper, MessageRepository messageRepository, UserService userService) {
         this.mapper = mapper;
         this.messageRepository = messageRepository;
+        this.userService = userService;
     }
 
     public void createMessage(MessageDto messageDto) {
         Message message = mapper.map(messageDto, Message.class);
-        message.setName(SecurityContextHolder.getContext().getAuthentication().getName());
+        String name = (userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getName());
+        String surname = (userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getSurname());
+        String fullName = name+" "+surname;
+        message.setName(fullName);
         message.setMessageDate(new Date());
         messageRepository.save(message);
     }
