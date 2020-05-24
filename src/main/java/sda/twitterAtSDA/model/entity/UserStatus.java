@@ -25,4 +25,5 @@ public class UserStatus {
     public void setOnline(boolean online) {
         isOnline = online;
     }
+
 }

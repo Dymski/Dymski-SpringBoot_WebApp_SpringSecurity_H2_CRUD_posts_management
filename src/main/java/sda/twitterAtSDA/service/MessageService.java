@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.model.dto.MessageDto;
 import sda.twitterAtSDA.model.entity.Message;
+import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.MessageRepository;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public class MessageService {
 
     private ModelMapper mapper;
     private MessageRepository messageRepository;
+    private UserService userService;
 
     public MessageService(ModelMapper mapper, MessageRepository messageRepository) {
         this.mapper = mapper;
@@ -28,7 +30,7 @@ public class MessageService {
         Message message = mapper.map(messageDto, Message.class);
         message.setName(SecurityContextHolder.getContext().getAuthentication().getName());
         message.setMessageDate(new Date());
-        message = messageRepository.save(message);
+        messageRepository.save(message);
     }
 
     public List<MessageDto> getAllMessages() {
