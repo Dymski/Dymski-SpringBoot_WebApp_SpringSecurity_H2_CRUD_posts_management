@@ -12,8 +12,7 @@ public class Message {
     private Long messageID;
     private Long postID;
     private Long commentID;
-    @ManyToOne(cascade = {CascadeType.ALL})
-    private User user;
+    private Long userId;
     private String name;
     @Temporal(TemporalType.DATE)
 
@@ -44,12 +43,12 @@ public class Message {
         this.commentID = commentID;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {

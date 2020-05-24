@@ -21,9 +21,6 @@ public class User {
     private Date dateOfBirth;
     private String role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<Message> messages = new HashSet<>();
-
     public Long getId() {
         return id;
     }
@@ -89,13 +86,6 @@ public class User {
         this.role = role;
     }
 
-    public Set<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Set<Message> messages) {
-        this.messages = messages;
-    }
 
     @Override
     public String toString() {
