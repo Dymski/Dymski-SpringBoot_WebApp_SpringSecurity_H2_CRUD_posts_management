@@ -27,8 +27,8 @@ public class MessageService {
 
     public void createMessage(MessageDto messageDto) {
         Message message = mapper.map(messageDto, Message.class);
-        String name = (userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getName());
-        String surname = (userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getSurname());
+        String name = (userService.getUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getName());
+        String surname = (userService.getUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getSurname());
         String fullName = name+" "+surname;
         message.setName(fullName);
         message.setMessageDate(new Date());

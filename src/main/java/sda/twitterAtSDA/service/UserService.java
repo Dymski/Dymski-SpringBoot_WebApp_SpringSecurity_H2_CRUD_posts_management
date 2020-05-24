@@ -9,7 +9,6 @@ import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,7 +35,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User findUserById(Long id) {
+    public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No user with such id"));
     }
 
@@ -52,7 +51,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDto findUserByEmail(String email) {
+    public UserDto getUserByEmail(String email) {
         return getAllUsers().stream()
                 .filter(userDto -> userDto.getEmail().equals(email))
                 .findFirst()
@@ -60,8 +59,16 @@ public class UserService {
     }
 
     public void modifyUser(User user){
-        User userFromDb = findUserById(user.getId());
+        User userFromDb = getUserById(user.getId());
         //Reszta kodu do modyfikowania użytkownika
 
+    }
+
+    public String getUserNameByEmail(String email){
+        return getAllUsers().stream()
+                .filter(userDto -> userDto.getEmail().equals(email))
+                .findFirst()
+                .get()
+                .getName();
     }
 }
