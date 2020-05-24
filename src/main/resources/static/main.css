@@ -6,6 +6,11 @@ html, body {
 :root {
     --jumbotron-padding-y: 3rem;
 }
+textarea{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
 
 .jumbotron {
     padding-top: var(--jumbotron-padding-y);
@@ -47,4 +52,8 @@ footer p {
 
 .messageInput{
     padding: 10px;
+}
+.userName{
+    float:right;
+    margin-right: 25px;
 }
