@@ -21,9 +21,10 @@ public class MessageService {
     private MessageRepository messageRepository;
     private UserService userService;
 
-    public MessageService(ModelMapper mapper, MessageRepository messageRepository) {
+    public MessageService(ModelMapper mapper, MessageRepository messageRepository, UserService userService) {
         this.mapper = mapper;
         this.messageRepository = messageRepository;
+        this.userService = userService;
     }
 
     public void createMessage(MessageDto messageDto) {
