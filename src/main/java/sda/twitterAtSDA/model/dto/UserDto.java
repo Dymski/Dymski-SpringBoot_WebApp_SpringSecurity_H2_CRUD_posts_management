@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-public class CreateUserDto {
+public class UserDto {
 
 private Long id;
 private String email;
@@ -88,4 +88,6 @@ private String role;
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+
 }

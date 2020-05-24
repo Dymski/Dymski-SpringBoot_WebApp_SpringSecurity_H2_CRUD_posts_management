@@ -28,7 +28,7 @@ public class MessageService {
         Message message = mapper.map(messageDto, Message.class);
         message.setName(SecurityContextHolder.getContext().getAuthentication().getName());
         message.setMessageDate(new Date());
-        message = messageRepository.save(message);
+        messageRepository.save(message);
     }
 
     public List<MessageDto> getAllMessages() {
