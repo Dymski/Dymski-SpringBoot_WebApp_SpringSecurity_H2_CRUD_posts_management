@@ -1,4 +1,5 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
+
 html, body {
     height: 100%
 }
@@ -6,7 +7,8 @@ html, body {
 :root {
     --jumbotron-padding-y: 3rem;
 }
-textarea{
+
+textarea {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -18,6 +20,7 @@ textarea{
     margin-bottom: 0;
     background-color: #fff;
 }
+
 @media (min-width: 768px) {
     .jumbotron {
         padding-top: calc(var(--jumbotron-padding-y) * 2);
@@ -46,14 +49,17 @@ footer p {
     margin-bottom: .25rem;
 }
 
-.logout{
+.logout {
     margin-right: 10px;
 }
 
-.messageInput{
+.messageInput {
     padding: 10px;
 }
-.userName{
-    float:right;
-    margin-right: 25px;
+
+.userName {
+}
+
+a {
+
 }

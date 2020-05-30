@@ -25,7 +25,7 @@ public class MessageService {
         this.userService = userService;
     }
 
-    public void createMessage(MessageDto messageDto) {
+    public void createPost(MessageDto messageDto) {
         Message message = mapper.map(messageDto, Message.class);
         String email = (SecurityContextHolder.getContext().getAuthentication().getName());
         UserDto userDto = userService.getUserByEmail(email);
@@ -47,7 +47,7 @@ public class MessageService {
 
         List<MessageDto> reverseList = new LinkedList<>();
 
-        for (int i = list.size()-1; i >= 0; i--) {
+        for (int i = list.size() - 1; i >= 0; i--) {
             reverseList.add(list.get(i));
         }
 
@@ -62,6 +62,10 @@ public class MessageService {
                 .get()
                 .getMessageID();
 
+    }
+
+    public void deleteMessage(Long id) {
+        messageRepository.deleteById(id);
     }
 
 }
