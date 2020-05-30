@@ -21,6 +21,7 @@ public class User {
     private Date dateOfBirth;
     private String role;
 
+
     public Long getId() {
         return id;
     }
@@ -85,6 +86,7 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
 
 
     @Override

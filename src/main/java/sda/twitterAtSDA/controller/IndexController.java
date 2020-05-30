@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.service.MessageService;
 import sda.twitterAtSDA.service.UserService;
 
@@ -20,12 +21,13 @@ public class IndexController {
 
     @GetMapping(value = {"/", "/index"})
     public String indexView(Model model) {
-        model.addAttribute("messageList", messageService.getAllMessages());
-        model.addAttribute("userName", userService.getUserNameByEmail(SecurityContextHolder
-                .getContext()
+        User user = userService.getUserById(userService.getUserByEmail(SecurityContextHolder.getContext()
                 .getAuthentication()
-                .getName()));
-        model.addAttribute("userId", userService.getUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId());
+                .getName())
+                .getId());
+        model.addAttribute("messageList", messageService.getAllMessages());
+        model.addAttribute("userName", user.getName());
+        model.addAttribute("userId", user.getId());
         return "index";
     }
 }
