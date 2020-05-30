@@ -21,6 +21,7 @@ public class MessageService {
     private ModelMapper mapper;
     private MessageRepository messageRepository;
     private UserService userService;
+    private Date messageTimeStamp;
 
     public MessageService(ModelMapper mapper, MessageRepository messageRepository, UserService userService) {
         this.mapper = mapper;
@@ -33,9 +34,11 @@ public class MessageService {
         String email = (SecurityContextHolder.getContext().getAuthentication().getName());
         UserDto userDto = userService.getUserByEmail(email);
         message.setName(userDto.getName()+" "+userDto.getSurname());
-        message.setMessageDate(new Date());
+        this.messageTimeStamp = new Date();
+        message.setMessageDate(messageTimeStamp);
         message.setUserId(userService.getUserByEmail(email).getId());
-        message.setPostID(message.getMessageID());
+        messageRepository.save(message);
+        message.setPostID(getMessageIdByTimeStamp(messageTimeStamp));
         messageRepository.save(message);
 
     }
@@ -45,6 +48,16 @@ public class MessageService {
                 .stream()
                 .map(message -> mapper.map(message, MessageDto.class))
                 .collect(Collectors.toList());
+    }
+
+    private Long getMessageIdByTimeStamp(Date date){
+       return messageRepository.findAll()
+                .stream()
+                .filter(message -> message.getMessageDate().equals(date))
+                .findFirst()
+                .get()
+                .getMessageID();
+
     }
 
 
