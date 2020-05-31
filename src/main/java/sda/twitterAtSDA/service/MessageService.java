@@ -1,5 +1,4 @@
 package sda.twitterAtSDA.service;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -18,12 +17,17 @@ public class MessageService {
     private MessageRepository messageRepository;
     private UserService userService;
     private Date messageTimeStamp;
+//    private Long postsToDisplay = 5l;
 
     public MessageService(ModelMapper mapper, MessageRepository messageRepository, UserService userService) {
         this.mapper = mapper;
         this.messageRepository = messageRepository;
         this.userService = userService;
     }
+
+//    private void displayMorePostsBy5(){
+//        postsToDisplay = postsToDisplay + 5l;
+//    }
 
     public void createPost(MessageDto messageDto) {
         Message message = mapper.map(messageDto, Message.class);
@@ -61,7 +65,6 @@ public class MessageService {
                 .findFirst()
                 .get()
                 .getMessageID();
-
     }
 
     public void deleteMessage(Long id) {
