@@ -2,6 +2,7 @@ package sda.twitterAtSDA.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sda.twitterAtSDA.model.dto.UserDto;
@@ -19,13 +20,11 @@ public class UserController {
          return "redirect:/index";
     }
 
-    @GetMapping("/users/{name}")
-    public ModelAndView findAllUserByNameQuery(@PathVariable("name") String name){
-        return new ModelAndView("users", "usersList", userService.getUsersByName(name));
+    @GetMapping("/searchUser")
+    public String getUsersByQuery(@RequestParam(value = "query") String query, Model model){
+        model.addAttribute("searchUsers", userService.getUsersByQuery(query));
+        return "searchUser";
     }
 
-    @GetMapping("/users")
-    public ModelAndView findAllUsers(){
-        return new ModelAndView("users", "usersList", userService.getAllUsers());
-    }
+
 }

@@ -68,8 +68,15 @@
             <div class="row">
                 <div class="col">
                     <div class="card mb-4 shadow-sm">
+
                         <div class="card-body">
                             <h4 class="card-text">Friends list</h4>
+                            <div>
+                                <form method="get" th:action="@{/searchUser}">
+                                    <input class="form-control" type="text" placeholder="Search for a friend" th:name="query" th:required="required">
+                                    <button type="button submit" class="btn btn-success m-2">Search</button>
+                                </form>
+                            </div>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">

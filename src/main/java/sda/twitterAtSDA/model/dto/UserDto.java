@@ -3,6 +3,7 @@ package sda.twitterAtSDA.model.dto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashMap;
 
 public class UserDto {
 
@@ -16,7 +17,6 @@ private String gender;
 private Date dateOfBirth;
 private String password;
 private String role;
-
 
     public Long getId() {
         return id;
