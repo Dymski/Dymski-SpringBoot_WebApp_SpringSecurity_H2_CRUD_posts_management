@@ -13,6 +13,7 @@ public class MessageDto {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date messageDate;
     private String messageText;
+    private Long userId;
 
     public Long getMessageID() {
         return messageID;
@@ -60,5 +61,13 @@ public class MessageDto {
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
