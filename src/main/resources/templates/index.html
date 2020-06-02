@@ -11,13 +11,7 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link type="text/css" rel="stylesheet" href="main.css"/>
-
-    <style>
-
-
-    </style>
-
+    <link type="text/css" rel="stylesheet" href="../static/main.css"/>
 
 </head>
 <body>
@@ -74,9 +68,10 @@
                             <div>
                                 <form method="get" th:action="@{/searchUser}">
                                     <input class="form-control" type="text" placeholder="Search for a friend" th:name="query" th:required="required">
-                                    <button type="button submit" class="btn btn-success m-2">Search</button>
+                                    <button type="button submit" class="btn btn-primary btn-sm button-search">Search</button>
                                 </form>
                             </div>
+
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">

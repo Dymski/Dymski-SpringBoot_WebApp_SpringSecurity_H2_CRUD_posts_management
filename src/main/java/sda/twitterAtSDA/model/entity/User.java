@@ -3,9 +3,6 @@ package sda.twitterAtSDA.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class User {
@@ -87,7 +84,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
 
 
     @Override
