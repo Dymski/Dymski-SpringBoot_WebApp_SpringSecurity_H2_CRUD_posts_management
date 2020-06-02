@@ -1,9 +1,7 @@
 package sda.twitterAtSDA.model.dto;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
-import java.util.HashMap;
 
 public class UserDto {
 

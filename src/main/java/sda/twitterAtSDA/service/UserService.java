@@ -5,12 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.exception.UserNotFoundException;
 import sda.twitterAtSDA.model.dto.UserDto;
-import sda.twitterAtSDA.model.dto.UserFriendsListDto;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
-
-import javax.management.Query;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,24 +49,6 @@ public class UserService {
                 .filter(userDto -> userDto.getEmail().equals(email))
                 .findFirst()
                 .get();
-    }
-
-    public void modifyUser(User user) {
-        User userFromDb = getUserById(user.getId());
-        //Reszta kodu do modyfikowania użytkownika
-
-    }
-
-    public String getUserNameByEmail(String email) {
-        return getAllUsers().stream()
-                .filter(userDto -> userDto.getEmail().equals(email))
-                .findFirst()
-                .get()
-                .getName();
-    }
-
-    public void addUserToFriendsList(UserFriendsListDto userFriendsListDto) {
-
     }
 
     public List<UserDto> getUsersByQuery(String query) {
