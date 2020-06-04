@@ -9,6 +9,7 @@ import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.service.MessageService;
 import sda.twitterAtSDA.service.UserService;
 
+
 @Controller
 public class IndexController {
 
