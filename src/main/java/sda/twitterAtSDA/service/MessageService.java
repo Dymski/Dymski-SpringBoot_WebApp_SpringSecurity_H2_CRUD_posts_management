@@ -49,13 +49,9 @@ public class MessageService {
                 .map(message -> mapper.map(message, MessageDto.class))
                 .collect(Collectors.toList());
 
-        List<MessageDto> reverseList = new LinkedList<>();
+        Collections.reverse(list);
 
-        for (int i = list.size() - 1; i >= 0; i--) {
-            reverseList.add(list.get(i));
-        }
-
-        return reverseList;
+        return list;
     }
 
     private Long getMessageIdByTimeStamp(Date date) {

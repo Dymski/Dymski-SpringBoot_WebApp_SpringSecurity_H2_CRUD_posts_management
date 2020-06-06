@@ -1,93 +1,48 @@
 package sda.twitterAtSDA.model.entity;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter
     private Long id;
+    @Getter @Setter
     private String name;
+    @Getter @Setter
     private String surname;
+    @Getter @Setter
     private String email;
+    @Getter @Setter
     private String password;
+    @Getter @Setter
     private String gender;
+    @Getter @Setter
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
+    @Getter @Setter
     private String role;
 
+    @Getter @Setter
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_friends",
+    joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name ="friends_list_id")})
+    private List<Friends> friendsList = new LinkedList<>();
 
-    public Long getId() {
-        return id;
+    public User addFriend(Friends friends){
+        friendsList.add(friends);
+        return this;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String userName) {
-        this.name = userName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String userSurname) {
-        this.surname = userSurname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String userEmail) {
-        this.email = userEmail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-
 
     @Override
     public String toString() {
@@ -102,4 +57,5 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
+
 }

@@ -5,11 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.exception.UserNotFoundException;
 import sda.twitterAtSDA.model.dto.UserDto;
-import sda.twitterAtSDA.model.dto.UserFriendsListDto;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
-
-import javax.management.Query;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,12 +44,6 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public List<UserDto> getUsersByName(String name) {
-        return getAllUsers().stream()
-                .filter(userDto -> userDto.getName().equals(name))
-                .collect(Collectors.toList());
-    }
-
     public UserDto getUserByEmail(String email) {
         return getAllUsers().stream()
                 .filter(userDto -> userDto.getEmail().equals(email))
@@ -60,22 +51,17 @@ public class UserService {
                 .get();
     }
 
-    public void modifyUser(User user) {
-        User userFromDb = getUserById(user.getId());
-        //Reszta kodu do modyfikowania użytkownika
+    public List<UserDto> getUsersByQuery(String query) {
+        String[] queryArray = query.split(" ");
+        String surnameQuery = queryArray[queryArray.length - 1];
+        List<UserDto> usersByQuery = getAllUsers().stream().filter(userDto -> userDto.getSurname().equals(surnameQuery))
+                .collect(Collectors.toList());
+        if (!usersByQuery.isEmpty()) {
+            return usersByQuery;
+        } else {
+            throw new UserNotFoundException("User not found");
+        }
 
     }
 
-    public String getUserNameByEmail(String email) {
-        return getAllUsers().stream()
-                .filter(userDto -> userDto.getEmail().equals(email))
-                .findFirst()
-                .get()
-                .getName();
-    }
-
-    public void addUserToFriendsList(UserFriendsListDto userFriendsListDto){
-
-    }
-    
 }

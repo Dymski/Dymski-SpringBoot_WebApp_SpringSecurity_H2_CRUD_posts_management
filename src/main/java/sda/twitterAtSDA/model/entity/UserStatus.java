@@ -1,5 +1,8 @@
 package sda.twitterAtSDA.model.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -8,23 +11,10 @@ import javax.persistence.Id;
 public class UserStatus {
 
     @Id
+    @Getter
+    @Setter
     private Long userId;
+    @Getter @Setter
     private boolean isOnline;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public boolean isOnline() {
-        return isOnline;
-    }
-
-    public void setOnline(boolean online) {
-        isOnline = online;
-    }
 
 }
