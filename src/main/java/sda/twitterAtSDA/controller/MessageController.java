@@ -28,12 +28,12 @@ public class MessageController {
         return "redirect:/index";
     }
 
-//    @PostMapping("/addComment")
-//    public String addComment(@ModelAttribute MessageDto messageDto){
-//        messageService.createComment(messageDto);
-//        new ModelAndView("message", "newMessage", MessageDto.class);
-//        return "redirect:/index";
-//    }
+    @PostMapping("/addComment")
+    public String addComment(@ModelAttribute MessageDto messageDto){
+        messageService.createComment(messageDto);
+        new ModelAndView("message", "newMessage", MessageDto.class);
+        return "redirect:/index";
+    }
 
 
 }

@@ -8,6 +8,7 @@ import sda.twitterAtSDA.model.dto.UserDto;
 import sda.twitterAtSDA.model.entity.Message;
 import sda.twitterAtSDA.repository.MessageRepository;
 
+import javax.validation.constraints.Null;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public class MessageService {
 
     }
 
-    public void createComment(Message messageDto){
+    public void createComment(MessageDto messageDto){
         Message message = mapper.map(messageDto, Message.class);
         String email = (SecurityContextHolder.getContext().getAuthentication().getName());
         UserDto userDto = userService.getUserByEmail(email);
@@ -50,8 +51,7 @@ public class MessageService {
         message.setMessageDate(messageTimeStamp);
         message.setUserId(userService.getUserByEmail(email).getId());
         message.setPostID(messageDto.getPostID());
-        messageRepository.save(message);
-        message.setCommentID(getMessageIdByTimeStamp(messageTimeStamp));
+        message.setCommentID(messageDto.getPostID());
         messageRepository.save(message);
     }
 
@@ -60,9 +60,7 @@ public class MessageService {
                 .stream()
                 .map(message -> mapper.map(message, MessageDto.class))
                 .collect(Collectors.toList());
-
         Collections.reverse(list);
-
         return list;
     }
 
@@ -72,21 +70,18 @@ public class MessageService {
                 .filter(message -> message.getCommentID().equals(0l))   // HC
                 .map(message -> mapper.map(message, MessageDto.class))
                 .collect(Collectors.toList());
-
         Collections.reverse(list);
-
         return list;
     }
 
     public List<MessageDto> getAllComments(Long postID) {
-        List<MessageDto> list = messageRepository.findAll()
-                .stream()
-                .filter(message -> message.getPostID().equals(postID))
-                .map(message -> mapper.map(message, MessageDto.class))
-                .collect(Collectors.toList());
-
-        Collections.reverse(list);
-        return list;
+            List<MessageDto> list = messageRepository.findAll()
+                    .stream()
+                    .filter(message -> message.getCommentID().equals(postID))
+                    .map(message -> mapper.map(message, MessageDto.class))
+                    .collect(Collectors.toList());
+            Collections.reverse(list);
+            return list;
     }
 
     private Long getMessageIdByTimeStamp(Date date) {

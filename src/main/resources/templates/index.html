@@ -121,8 +121,6 @@
                                                       placeholder="Share your comments here..." th:required="required"
                                                       th:name="commentText"></textarea>
                                             <input type="hidden" th:name="postID" th:value="${posts.messageID}">
-
-
                                             <div class="d-flex flex-row-reverse">
                                                 <button type="button submit" class="btn btn-light m-2">Comment</button>
                                             </div>
@@ -130,7 +128,8 @@
                                     </div>
                                     <table>
                                         <h6 class="card-text">Comments:</h6>
-                                        <tr th:name="postID" th:value="${posts.messageID}" th:each="comments : ${commentsList}" th:object="${comments}">
+                                        <tr th:name="postID" th:value="${posts.messageID}"
+                                            th:each="comments : ${commentsList}" th:object="${comments}">
                                             <p>
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-1" th:type="text"
@@ -138,7 +137,8 @@
                                                 <small th:type="text"
                                                        th:text="${comments.getMessageDate()}"></small>
                                             </div>
-                                            <small class="mb-1" th:type="text" th:text="${comments.messageText}"></small>
+                                            <small class="mb-1" th:type="text"
+                                                   th:text="${comments.messageText}"></small>
                                             </p>
                                             <input type="hidden" th:name="postID" th:value="${posts.messageID}">
                                         </tr>
