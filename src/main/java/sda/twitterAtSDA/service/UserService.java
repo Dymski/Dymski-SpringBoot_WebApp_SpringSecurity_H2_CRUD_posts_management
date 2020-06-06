@@ -73,6 +73,12 @@ public class UserService {
         User user = userRepository.findById(userId).get();
         User friend = userRepository.findById(friendId).get();
 
+        user.getFriendship().getFriends().add(friend);
+        friend.getFriendship().getFriends().add(user);
+
+        userRepository.save(user);
+        userRepository.save(friend);
+
     }
     public void addFriendTest(){
         User user = new User();

@@ -14,13 +14,13 @@
         <th scope="col">Surname</th>
 
     </tr>
-    <form action="/addFriend" method="post" th:object="${Long}">
+    <form action="/addFriend" method="post">
         <tr th:each="friend : ${searchUsers}">
             <td th:text="${friend.name}"></td>
             <td th:text="${friend.surname}"></td>
             <td>
                 <input type="hidden" name="friendId" th:value="${friend.getId()}"/>
-                <input type="hidden" name="friendId" th:value="${userId}"/>
+                <input type="hidden" name="userId" th:value="${userId}"/>
                 <button class="btn btn-success m-2" value="userId friendId">Add friend</button>
             </td>
         </tr>

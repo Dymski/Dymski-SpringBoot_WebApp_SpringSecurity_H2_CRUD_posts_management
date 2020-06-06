@@ -33,7 +33,7 @@ public class User {
     @Getter @Setter
     private String role;
 
-    @Getter @Setter
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "friendship_id")
     private Friendship friendship;
@@ -52,4 +52,14 @@ public class User {
                 '}';
     }
 
+    public Friendship getFriendship() {
+        if (friendship == null){
+            friendship = new Friendship();
+        }
+        return friendship;
+    }
+
+    public void setFriendship(Friendship friendship) {
+        this.friendship = friendship;
+    }
 }
