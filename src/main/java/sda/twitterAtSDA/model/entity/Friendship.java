@@ -5,15 +5,17 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-public class Friends {
+import java.util.Set;
 
-    @Getter
-    @Setter
+@Entity
+public class Friendship {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Getter
-    @Setter
-    private Long friendId;
+    @Getter @Setter
+    private Long Id;
+    @Getter @Setter
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> friends;
+
 }

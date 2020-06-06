@@ -6,8 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 public class User {
@@ -33,16 +34,9 @@ public class User {
     private String role;
 
     @Getter @Setter
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_friends",
-    joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name ="friends_list_id")})
-    private List<Friends> friendsList = new LinkedList<>();
-
-    public User addFriend(Friends friends){
-        friendsList.add(friends);
-        return this;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "friendship_id")
+    private Friendship friendship;
 
     @Override
     public String toString() {
