@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+
+    </tr>
+    <tr th:each="user : ${searchUsers}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+    </tr>
+    </tbody>
+</table>
+<form action="/index">
+    <button type="button submit" class="btn btn-secondary">Back to Main</button>
+</form>
+
+
+</body>
+</html>
