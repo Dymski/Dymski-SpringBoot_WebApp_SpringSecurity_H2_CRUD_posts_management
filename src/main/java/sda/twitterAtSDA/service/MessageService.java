@@ -94,7 +94,7 @@ public class MessageService {
     }
 
     public void deleteMessage(Long id) {
-        messageRepository.deleteById(id);
+       messageRepository.deleteById(id);
     }
 
 }
