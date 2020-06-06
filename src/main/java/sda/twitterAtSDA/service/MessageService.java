@@ -18,6 +18,7 @@ public class MessageService {
     private MessageRepository messageRepository;
     private UserService userService;
     private Date messageTimeStamp;
+//    private Long postsToDisplay = 5l;
 
     public MessageService(ModelMapper mapper, MessageRepository messageRepository, UserService userService) {
         this.mapper = mapper;
@@ -33,10 +34,25 @@ public class MessageService {
         this.messageTimeStamp = new Date();
         message.setMessageDate(messageTimeStamp);
         message.setUserId(userService.getUserByEmail(email).getId());
+        message.setCommentID(0l);
         messageRepository.save(message);
         message.setPostID(getMessageIdByTimeStamp(messageTimeStamp));
         messageRepository.save(message);
 
+    }
+
+    public void createComment(Message messageDto){
+        Message message = mapper.map(messageDto, Message.class);
+        String email = (SecurityContextHolder.getContext().getAuthentication().getName());
+        UserDto userDto = userService.getUserByEmail(email);
+        message.setName(userDto.getName() + " " + userDto.getSurname());
+        this.messageTimeStamp = new Date();
+        message.setMessageDate(messageTimeStamp);
+        message.setUserId(userService.getUserByEmail(email).getId());
+        message.setPostID(messageDto.getPostID());
+        messageRepository.save(message);
+        message.setCommentID(getMessageIdByTimeStamp(messageTimeStamp));
+        messageRepository.save(message);
     }
 
     public List<MessageDto> getAllMessages() {
@@ -50,6 +66,29 @@ public class MessageService {
         return list;
     }
 
+    public List<MessageDto> getAllPosts() {
+        List<MessageDto> list = messageRepository.findAll()
+                .stream()
+                .filter(message -> message.getCommentID().equals(0l))   // HC
+                .map(message -> mapper.map(message, MessageDto.class))
+                .collect(Collectors.toList());
+
+        Collections.reverse(list);
+
+        return list;
+    }
+
+    public List<MessageDto> getAllComments(Long postID) {
+        List<MessageDto> list = messageRepository.findAll()
+                .stream()
+                .filter(message -> message.getPostID().equals(postID))
+                .map(message -> mapper.map(message, MessageDto.class))
+                .collect(Collectors.toList());
+
+        Collections.reverse(list);
+        return list;
+    }
+
     private Long getMessageIdByTimeStamp(Date date) {
         return messageRepository.findAll()
                 .stream()
@@ -57,7 +96,6 @@ public class MessageService {
                 .findFirst()
                 .get()
                 .getMessageID();
-
     }
 
     public void deleteMessage(Long id) {
