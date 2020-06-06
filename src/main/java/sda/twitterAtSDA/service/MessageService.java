@@ -74,10 +74,10 @@ public class MessageService {
         return list;
     }
 
-    public List<MessageDto> getAllComments(Long postID) {
+    public List<MessageDto> getAllComments() {
             List<MessageDto> list = messageRepository.findAll()
                     .stream()
-                    .filter(message -> message.getCommentID().equals(postID))
+                    .filter(message -> (!message.getCommentID().equals(0L)))
                     .map(message -> mapper.map(message, MessageDto.class))
                     .collect(Collectors.toList());
             Collections.reverse(list);

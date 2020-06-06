@@ -29,8 +29,9 @@ public class IndexController {
                 .getAuthentication()
                 .getName())
                 .getId());
-        model.addAttribute("postsList", messageService.getAllPosts());
-        model.addAttribute("commentsList", messageService.getAllComments((Long) model.getAttribute("postsID")));
+        model.addAttribute("messagesList", messageService.getAllMessages());
+//        model.addAttribute("postsList", messageService.getAllPosts());
+//        model.addAttribute("commentsList", messageService.getAllComments());
         model.addAttribute("userName", user.getName());
         model.addAttribute("userId", user.getId());
         return "index";
