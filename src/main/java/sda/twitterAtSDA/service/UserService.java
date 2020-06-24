@@ -4,12 +4,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.exception.UserNotFoundException;
+import sda.twitterAtSDA.model.RoleType;
 import sda.twitterAtSDA.model.dto.UserDto;
 import sda.twitterAtSDA.model.entity.Friendship;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
 
-import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +31,7 @@ public class UserService {
     public void addUser(UserDto userDto) {
         User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("ROLE_USER");
+        user.setRole(RoleType.ROLE_USER.toString());
         userRepository.save(user);
     }
 
