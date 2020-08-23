@@ -11,26 +11,20 @@ import java.util.Set;
 
 
 @Entity
+@Getter
+@Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
-    @Getter @Setter
     private String name;
-    @Getter @Setter
     private String surname;
-    @Getter @Setter
     private String email;
-    @Getter @Setter
     private String password;
-    @Getter @Setter
     private String gender;
-    @Getter @Setter
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Getter @Setter
     private String role;
 
 

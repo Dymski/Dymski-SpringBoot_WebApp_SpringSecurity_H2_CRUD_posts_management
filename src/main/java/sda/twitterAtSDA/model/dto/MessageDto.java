@@ -6,23 +6,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+@Getter
+@Setter
 public class MessageDto {
 
-    @Getter
-    @Setter
     private Long messageID;
-    @Getter @Setter
     private Long postID;
-    @Getter @Setter
     private Long commentID;
-    @Getter @Setter
     private String name;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Getter @Setter
     private Date messageDate;
-    @Getter @Setter
     private String messageText;
-    @Getter @Setter
     private Long userId;
 
 

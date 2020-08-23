@@ -8,13 +8,12 @@ import javax.persistence.Id;
 
 
 @Entity
+@Getter
+@Setter
 public class UserStatus {
 
     @Id
-    @Getter
-    @Setter
     private Long userId;
-    @Getter @Setter
     private boolean isOnline;
 
 }
