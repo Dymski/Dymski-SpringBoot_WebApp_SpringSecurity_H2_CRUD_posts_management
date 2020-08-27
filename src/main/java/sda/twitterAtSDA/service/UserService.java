@@ -31,7 +31,7 @@ public class UserService {
     public void addUser(UserDto userDto) {
         User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(RoleType.ROLE_USER.toString());
+        user.setRole(RoleType.ROLE_USER);
         userRepository.save(user);
     }
 
@@ -53,7 +53,7 @@ public class UserService {
         return getAllUsers().stream()
                 .filter(userDto -> userDto.getEmail().equals(email))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     public List<UserDto> getUsersByQuery(String query) {
@@ -88,7 +88,7 @@ public class UserService {
         user.setPassword("password");
         user.setDateOfBirth(new Date());
         user.setGender("male");
-        user.setRole("ROLE_USER");
+        user.setRole(RoleType.ROLE_USER);
         user = userRepository.save(user);
 
         Friendship friendship1 = new Friendship();
@@ -101,7 +101,7 @@ public class UserService {
         user2.setPassword("password");
         user2.setDateOfBirth(new Date());
         user2.setGender("male");
-        user2.setRole("ROLE_USER");
+        user2.setRole(RoleType.ROLE_USER);
         user2.setFriendship(friendship1);
         user2 = userRepository.save(user2);
 
@@ -117,7 +117,7 @@ public class UserService {
         user1.setPassword("password");
         user1.setDateOfBirth(new Date());
         user1.setGender("male");
-        user1.setRole("ROLE_USER");
+        user1.setRole(RoleType.ROLE_USER);
         user1.setFriendship(friendship);
         user1 = userRepository.save(user1);
 

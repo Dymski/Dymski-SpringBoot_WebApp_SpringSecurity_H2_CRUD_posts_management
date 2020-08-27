@@ -3,6 +3,7 @@ package sda.twitterAtSDA.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import sda.twitterAtSDA.model.RoleType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class User {
     private String gender;
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    private String role;
+    private RoleType role;
 
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -35,14 +36,10 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userName='" + name + '\'' +
-                ", userSurname='" + surname + '\'' +
-                ", userEmail='" + email + '\'' +
-                ", password='" + password + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", role='" + role + '\'' +
                 '}';
     }
 

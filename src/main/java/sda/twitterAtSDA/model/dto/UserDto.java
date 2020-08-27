@@ -3,6 +3,7 @@ package sda.twitterAtSDA.model.dto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import sda.twitterAtSDA.model.RoleType;
 
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class UserDto {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dateOfBirth;
     private String password;
-    private String role;
+    private RoleType role;
 
 
 }
