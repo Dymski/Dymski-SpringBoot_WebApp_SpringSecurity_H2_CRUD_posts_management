@@ -3,46 +3,37 @@ package sda.twitterAtSDA.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import sda.twitterAtSDA.model.RoleType;
 
 import javax.persistence.*;
 import java.util.Date;
 
 
 @Entity
+@Getter
+@Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     private Long id;
-    @Getter @Setter
     private String name;
-    @Getter @Setter
     private String surname;
-    @Getter @Setter
     private String email;
-    @Getter @Setter
     private String password;
-    @Getter @Setter
     private String gender;
-    @Getter @Setter
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Getter @Setter
-    private String role;
+    private RoleType role;
 
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userName='" + name + '\'' +
-                ", userSurname='" + surname + '\'' +
-                ", userEmail='" + email + '\'' +
-                ", password='" + password + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", role='" + role + '\'' +
                 '}';
     }
 

@@ -28,7 +28,7 @@ public class UserService {
     public void addUser(UserDto userDto) {
         User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(RoleType.ROLE_USER.toString());
+        user.setRole(RoleType.ROLE_USER);
         userRepository.save(user);
     }
 
@@ -50,7 +50,7 @@ public class UserService {
         return getAllUsers().stream()
                 .filter(userDto -> userDto.getEmail().equals(email))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     public List<UserDto> getUsersByQuery(String query) {
