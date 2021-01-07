@@ -3,7 +3,6 @@ package sda.twitterAtSDA.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import sda.twitterAtSDA.model.RoleType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,7 +23,7 @@ public class User {
     private String gender;
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    private RoleType role;
+    private String role;
 
 
     @Override

@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sda.twitterAtSDA.exception.UserNotFoundException;
-import sda.twitterAtSDA.model.RoleType;
 import sda.twitterAtSDA.model.dto.UserDto;
 import sda.twitterAtSDA.model.entity.User;
 import sda.twitterAtSDA.repository.UserRepository;
@@ -28,13 +27,10 @@ public class UserService {
     public void addUser(UserDto userDto) {
         User user = mapper.map(userDto, User.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(RoleType.ROLE_USER);
+        user.setRole("ROLE_USER");
         userRepository.save(user);
     }
 
-    public void deleteUserById(Long id) {
-        userRepository.deleteById(id);
-    }
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No user with such id"));
@@ -53,16 +49,4 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
-    public List<UserDto> getUsersByQuery(String query) {
-        String[] queryArray = query.split(" ");
-        String surnameQuery = queryArray[queryArray.length - 1];
-        List<UserDto> usersByQuery = getAllUsers().stream().filter(userDto -> userDto.getSurname().equals(surnameQuery))
-                .collect(Collectors.toList());
-        if (!usersByQuery.isEmpty()) {
-            return usersByQuery;
-        } else {
-            throw new UserNotFoundException("User not found");
-        }
-
-    }
 }

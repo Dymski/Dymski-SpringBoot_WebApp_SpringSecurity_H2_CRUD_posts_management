@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/index").hasAnyAuthority("0", "1")
+                .antMatchers("/", "/index").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .loginProcessingUrl("/login-process")
-                .failureForwardUrl("/login-error")
+                .failureForwardUrl("/login?error")
                 .defaultSuccessUrl("/index")
                 .and()
                 .logout().logoutSuccessUrl("/login")
