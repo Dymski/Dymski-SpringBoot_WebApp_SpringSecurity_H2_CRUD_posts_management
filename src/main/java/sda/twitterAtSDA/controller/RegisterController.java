@@ -2,6 +2,7 @@ package sda.twitterAtSDA.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import sda.twitterAtSDA.model.dto.UserDto;
 
@@ -12,4 +13,5 @@ public class RegisterController {
     public ModelAndView registerView(){
         return new ModelAndView("register", "newUser", new UserDto());
     }
+
 }

@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Main page</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
     <link type="text/css" rel="stylesheet" href="main.css"/>
 
     <style>
@@ -59,7 +57,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Twitterinio</h1>
+            <h1 class="jumbotron-heading">Web App</h1>
             <p class="lead text-muted">Twitter like project realized during Java KRK 22 Course by KrystianU and
                 Dymski.</p>
         </div>
@@ -69,21 +67,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-body">
-                                <h4 class="card-text">Friends list</h4>
-                                <div>
-                                    <form method="get" th:action="@{/searchUser}">
-                                        <input class="form-control" type="text" placeholder="Search for a friend"
-                                               th:name="query" th:required="required">
-                                        <div class="d-flex flex-row-reverse">
-                                            <button type="button submit" class="btn btn-primary btn-sm m-2">Search
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-4 shadow-sm">
@@ -165,16 +148,6 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-body">
-                                <h4 class="card-text">Chat room</h4>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to
-                                    additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

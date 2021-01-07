@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -34,10 +32,6 @@ public class User {
     private String role;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "friendship_id")
-    private Friendship friendship;
-
     @Override
     public String toString() {
         return "User{" +
@@ -52,14 +46,4 @@ public class User {
                 '}';
     }
 
-    public Friendship getFriendship() {
-        if (friendship == null){
-            friendship = new Friendship();
-        }
-        return friendship;
-    }
-
-    public void setFriendship(Friendship friendship) {
-        this.friendship = friendship;
-    }
 }
